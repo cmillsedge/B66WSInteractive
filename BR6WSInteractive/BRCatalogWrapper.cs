@@ -50,5 +50,14 @@ namespace BR6WSInteractive
             return dataElements;
 
         }
+
+        public ParameterRoleArray GetRoles()
+        {
+
+            CatalogueApi catalogueApi = new CatalogueApi(_url);
+            ParameterRoleArray roles = catalogueApi.CatalogueParameterRoles(_session.SessionId);
+            return roles;
+
+        }
     }
 }

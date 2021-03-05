@@ -52,6 +52,7 @@
     <Compile Include="BRCatalogWrapper.cs" />
     <Compile Include="BROutlineWrapper.cs" />
     <Compile Include="BROutParamWrapper.cs" />
+    <Compile Include="ErrorParser.cs" />
     <Compile Include="frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +64,12 @@
     </Compile>
     <Compile Include="frmLogOn.Designer.cs">
       <DependentUpon>frmLogOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParameterAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParameterAdd.Designer.cs">
+      <DependentUpon>frmParameterAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSelect.cs">
       <SubType>Form</SubType>
@@ -79,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogOn.resx">
       <DependentUpon>frmLogOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParameterAdd.resx">
+      <DependentUpon>frmParameterAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelect.resx">
       <DependentUpon>frmSelect.cs</DependentUpon>

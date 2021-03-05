@@ -120,6 +120,11 @@ namespace BR6WSInteractive
 
         private void cmbOutlines_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateOutlineParams();
+        }
+
+        private void UpdateOutlineParams()
+        {
             try
             {
                 BROutParamWrapper paramOps = new BROutParamWrapper(_session, _url);
@@ -157,13 +162,21 @@ namespace BR6WSInteractive
             try
             {
                 TreeNode node = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
-                if (node.Tag != null && node.Tag.GetType().ToString() == "IO.Swagger.Model.ParameterTypeAlias")
-                { Console.WriteLine(node.Tag.GetType().ToString()); }
+                if (node.Tag != null && node.Tag.GetType().ToString() == "IO.Swagger.Model.ParameterTypeAlias" && cmbOutlines.Text != "")
+                { 
+                    using (frmParameterAdd frmParam = new frmParameterAdd(_session, _url, cmbOutlines.Text, (ParameterTypeAlias)node.Tag))
+                    {
+                        frmParam.Location = this.Location;
+                        frmParam.ShowDialog();
+
+                    }
+                    UpdateOutlineParams();
+                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error encountered");
             }
         }
     }

@@ -30,6 +30,23 @@ namespace BR6WSInteractive
             OutlineParameterArray outlineParameters = outlineParametersApi.OutlineParameterList(_session.SessionId, outlineName);
             return outlineParameters;
         }
+
+        public string CreateOutlineParameter(string outlineName, OutlineParameter parameter)
+        {
+            string outcome = "";
+            try
+            {
+                OutlineParametersApi outlineParametersApi = new OutlineParametersApi(_url);
+                outlineParametersApi.OutlineParameterCreate(_session.SessionId, outlineName, parameter);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                outcome = ErrorParser.GetErrorMessageFromBioRailsError(ex.Message);
+            }
+             
+            return outcome;
+        }
     }
 
 
