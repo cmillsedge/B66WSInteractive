@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BR6WSInteractive
 {
-    public static class PathToTreeConverter
+    public static class NodeOperations
     {
         public static TreeNode MakeTreeFromPaths(List<string> paths, int imgIndex, string rootNodeName = "", char separator = '/')
         {
@@ -25,5 +25,23 @@ namespace BR6WSInteractive
             }
             return rootNode;
         }
+
+        //public static IEnumerable<TreeNode> FindNodeByValue(TreeNodeCollection nodes, string searchstring)
+        //{
+
+
+        //    foreach (TreeNode node in nodes)
+        //    {
+        //        if (node.Value.IndexOf(searchstring,StringComparison.CurrentCultureIgnoreCase) >= 0)
+        //            yield return node;
+        //        else
+        //        {
+        //            node.
+        //            foreach (var subNode in FindNodeByValue(node.ChildNodes, searchstring))
+        //                yield return subNode;
+        //        }
+        //    }
+        //}
+
     }
 }

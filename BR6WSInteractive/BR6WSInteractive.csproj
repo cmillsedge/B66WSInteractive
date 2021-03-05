@@ -78,7 +78,7 @@
       <DependentUpon>frmSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="AddNodeByPath.cs" />
-    <Compile Include="PathToTreeConverter.cs" />
+    <Compile Include="NodeOperations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCatalog.resx">

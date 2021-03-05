@@ -39,7 +39,7 @@ namespace BR6WSInteractive
             this.grpParams = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.lblFilter = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.dgvParams = new System.Windows.Forms.DataGridView();
             this.ParameterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,7 +106,7 @@ namespace BR6WSInteractive
             // 
             this.grpParams.Controls.Add(this.btnFilter);
             this.grpParams.Controls.Add(this.lblFilter);
-            this.grpParams.Controls.Add(this.textBox1);
+            this.grpParams.Controls.Add(this.txtFilter);
             this.grpParams.Controls.Add(this.dgvParams);
             this.grpParams.Controls.Add(this.lblParams);
             this.grpParams.Controls.Add(this.lblCatalog);
@@ -126,6 +126,7 @@ namespace BR6WSInteractive
             this.btnFilter.Size = new System.Drawing.Size(38, 20);
             this.btnFilter.TabIndex = 17;
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // lblFilter
             // 
@@ -136,12 +137,12 @@ namespace BR6WSInteractive
             this.lblFilter.TabIndex = 16;
             this.lblFilter.Text = "Tree Filter Value";
             // 
-            // textBox1
+            // txtFilter
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtFilter.Location = new System.Drawing.Point(34, 40);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(208, 20);
+            this.txtFilter.TabIndex = 15;
             // 
             // dgvParams
             // 
@@ -249,7 +250,7 @@ namespace BR6WSInteractive
         private System.Windows.Forms.GroupBox grpParams;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.DataGridView dgvParams;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParameterName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;

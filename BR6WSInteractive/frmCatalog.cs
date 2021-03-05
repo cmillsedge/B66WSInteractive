@@ -17,6 +17,7 @@ namespace BR6WSInteractive
         Session _session;
         string _url;
         BRCatalogWrapper _catalogOps;
+        TreeNode _originalnodes;
         public frmCatalog(Session wsSession, string url)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace BR6WSInteractive
                 PopulateTreeWithConcepts();
                 PopulateTreeWithParams();
                 PopulateTreeWithLookups();
+                _originalnodes = trvCatalog.Nodes[0];
                 PopulateOutlines();
             }
             catch (Exception ex)
@@ -48,7 +50,7 @@ namespace BR6WSInteractive
                     if (dataConcept.Path.Length > 0)
                     { paths.Add(dataConcept.Path.TrimStart('/')); }
                 }
-                TreeNode node = PathToTreeConverter.MakeTreeFromPaths(paths, 0, "BioRails Catalog", '/');
+                TreeNode node = NodeOperations.MakeTreeFromPaths(paths, 0, "BioRails Catalog", '/');
                 trvCatalog.Nodes.Add(node);
             }
             catch (Exception ex)
@@ -178,6 +180,13 @@ namespace BR6WSInteractive
             {
                 MessageBox.Show(ex.Message, "Error encountered");
             }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
+            //trvCatalog.Nodes.Find(txtFilter.Text, true);
+            Console.WriteLine("thing");
         }
     }
 }
