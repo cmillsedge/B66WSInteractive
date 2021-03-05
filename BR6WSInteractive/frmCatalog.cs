@@ -24,6 +24,8 @@ namespace BR6WSInteractive
             _url = url;
             _catalogOps = new BRCatalogWrapper(_session, _url);
             PopulateTreeWithConcepts();
+            PopulateTreeWithParams();
+            PopulateTreeWithLookups();
 
 
         }
@@ -37,22 +39,36 @@ namespace BR6WSInteractive
                 { paths.Add(dataConcept.Path.TrimStart('/')); }
             }
             //PathToTreeConverter.PopulateTreeView(trvCatalog, paths, '/');
-            TreeNode node = PathToTreeConverter.MakeTreeFromPaths(paths, "BioRails", '/');
+            TreeNode node = PathToTreeConverter.MakeTreeFromPaths(paths, 0, "BioRails Catalog", '/');
             trvCatalog.Nodes.Add(node);
+        }
+
+        public void PopulateTreeWithParams()
+        {
+            ParameterTypeAliasArray parameterTypeAliases = _catalogOps.GetParamAliases();
+            foreach (ParameterTypeAlias parameterTypeAlias in parameterTypeAliases)
+            {
+                if (parameterTypeAlias.Path.LastIndexOf('/') != 0)
+                {
+                    string path = parameterTypeAlias.Path.Substring(0, parameterTypeAlias.Path.LastIndexOf('/'));
+                    AddNodeByPath.AddPTypeNode(trvCatalog, path, parameterTypeAlias);
+                }
+            }
         }
 
         public void PopulateTreeWithLookups()
         {
-            NamedArray dataConcepts = _catalogOps.GetAllConcepts();
-            List<string> paths = new List<string>();
-            foreach (Named dataConcept in dataConcepts)
+            NamedArray dataElements = _catalogOps.GetLookups();
+            foreach (Named dataElement in dataElements)
             {
-                if (dataConcept.Path.Length > 0)
-                { paths.Add(dataConcept.Path.TrimStart('/')); }
+                if (dataElement.Path.LastIndexOf('/') != 0)
+                {
+                    dataElement.Path = dataElement.Path;
+                    string path = dataElement.Path.Substring(0, dataElement.Path.LastIndexOf('/'));
+                    //Console.WriteLine("Search Path: " + path + " | Element Path: " + dataElement.Path + " | Element Name: " + dataElement.Name);
+                    AddNodeByPath.AddLookupNode(trvCatalog, path, dataElement);
+                }
             }
-            //PathToTreeConverter.PopulateTreeView(trvCatalog, paths, '/');
-            TreeNode node = PathToTreeConverter.MakeTreeFromPaths(paths, "BioRails", '/');
-            trvCatalog.Nodes.Add(node);
         }
     }
 }

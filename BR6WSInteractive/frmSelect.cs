@@ -27,7 +27,7 @@ namespace BR6WSInteractive
         {
             try
             {
-                using (frmCatalog frmCatalog = new frmCatalog(_session, _url + "/api/v6"))
+                using (frmCatalog frmCatalog = new frmCatalog(_session, _url))
                 {
                     frmCatalog.Location = this.Location;
                     this.Hide();

@@ -30,5 +30,25 @@ namespace BR6WSInteractive
             dataConcepts = catalogueApi.DataConcepts(_session.SessionId); ;
             return dataConcepts;
         }
+
+        public ParameterTypeAliasArray GetParamAliases()
+        {
+
+            ParameterTypeAliasArray parameterTypeAliases = new ParameterTypeAliasArray();
+            CatalogueApi catalogueApi = new CatalogueApi(_url);
+            parameterTypeAliases = catalogueApi.CatalogueParameters(_session.SessionId);
+            return parameterTypeAliases;
+
+        }
+
+        public NamedArray GetLookups()
+        {
+
+            NamedArray dataElements = new NamedArray();
+            CatalogueApi catalogueApi = new CatalogueApi(_url);
+            dataElements = catalogueApi.DataElements(_session.SessionId);
+            return dataElements;
+
+        }
     }
 }
