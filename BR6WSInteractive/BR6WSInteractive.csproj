@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BRCatalogWrapper.cs" />
+    <Compile Include="BROutlineWrapper.cs" />
+    <Compile Include="BROutParamWrapper.cs" />
     <Compile Include="frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
