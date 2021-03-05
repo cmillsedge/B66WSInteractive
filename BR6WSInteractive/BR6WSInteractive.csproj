@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BRCatalogWrapper.cs" />
     <Compile Include="frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +68,7 @@
     <Compile Include="frmSelect.Designer.cs">
       <DependentUpon>frmSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="PathToTreeConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCatalog.resx">

@@ -30,13 +30,22 @@ namespace BR6WSInteractive
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCatalog));
+            this.trvCatalog = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
+            // 
+            // trvCatalog
+            // 
+            this.trvCatalog.Location = new System.Drawing.Point(12, 48);
+            this.trvCatalog.Name = "trvCatalog";
+            this.trvCatalog.Size = new System.Drawing.Size(256, 624);
+            this.trvCatalog.TabIndex = 0;
             // 
             // frmCatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 708);
+            this.Controls.Add(this.trvCatalog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCatalog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -46,5 +55,7 @@ namespace BR6WSInteractive
         }
 
         #endregion
+
+        private System.Windows.Forms.TreeView trvCatalog;
     }
 }
