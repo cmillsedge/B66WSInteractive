@@ -52,7 +52,16 @@
     <Compile Include="BRCatalogWrapper.cs" />
     <Compile Include="BROutlineWrapper.cs" />
     <Compile Include="BROutParamWrapper.cs" />
+    <Compile Include="BRQueryWrapper.cs" />
+    <Compile Include="BRTaskWrapper.cs" />
     <Compile Include="ErrorParser.cs" />
+    <Compile Include="FilterGenerator.cs" />
+    <Compile Include="frmQueries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQueries.Designer.cs">
+      <DependentUpon>frmQueries.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,9 +87,19 @@
       <DependentUpon>frmSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="AddNodeByPath.cs" />
+    <Compile Include="frmTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTasks.Designer.cs">
+      <DependentUpon>frmTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataTableConverter.cs" />
     <Compile Include="NodeOperations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmQueries.resx">
+      <DependentUpon>frmQueries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +112,9 @@
     <EmbeddedResource Include="frmSelect.resx">
       <DependentUpon>frmSelect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTasks.resx">
+      <DependentUpon>frmTasks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -102,6 +124,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -43,5 +43,47 @@ namespace BR6WSInteractive
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnTasks_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (frmTasks frmTasks = new frmTasks(_session, _url))
+                {
+                    frmTasks.Location = this.Location;
+                    this.Hide();
+                    frmTasks.ShowDialog();
+
+                }
+                //frmSel closed re-display logon
+                this.Show();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnQueries_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (frmQueries frmQueries = new frmQueries(_session, _url))
+                {
+                    frmQueries.Location = this.Location;
+                    this.Hide();
+                    frmQueries.ShowDialog();
+
+                }
+                //frmSel closed re-display logon
+                this.Show();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

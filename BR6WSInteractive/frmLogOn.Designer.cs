@@ -72,7 +72,7 @@ namespace BR6WSInteractive
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(280, 20);
             this.txtURL.TabIndex = 3;
-            this.txtURL.Text = "http://192.168.0.38/";
+            this.txtURL.Text = "https://biorails.dev.1910genetics.com/";
             // 
             // txtUser
             // 
@@ -80,7 +80,7 @@ namespace BR6WSInteractive
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(280, 20);
             this.txtUser.TabIndex = 4;
-            this.txtUser.Text = "support";
+            this.txtUser.Text = "admin";
             // 
             // txtPass
             // 
@@ -88,7 +88,7 @@ namespace BR6WSInteractive
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(280, 20);
             this.txtPass.TabIndex = 5;
-            this.txtPass.Text = "testing";
+            this.txtPass.Text = "biorails2021";
             // 
             // btnConnect
             // 
