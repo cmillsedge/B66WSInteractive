@@ -32,9 +32,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IO.Swagger">
-      <HintPath>..\..\..\..\..\..\..\..\Temp\AlecDLL\IO.Swagger.dll</HintPath>
+    <Reference Include="BioRails.Core">
+      <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsCore\src\BioRails.Core\bin\Release\BioRails.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BR.Inv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsInvNew\src\BR.Inv\bin\Debug\BR.Inv.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,23 +73,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BRCatalogWrapper.cs" />
-    <Compile Include="BROutlineWrapper.cs" />
-    <Compile Include="BROutParamWrapper.cs" />
-    <Compile Include="BRQueryWrapper.cs" />
-    <Compile Include="BRTaskWrapper.cs" />
-    <Compile Include="ErrorParser.cs" />
-    <Compile Include="FilterGenerator.cs" />
-    <Compile Include="frmQueries.cs">
+    <Compile Include="Forms\frmFormFromRec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQueries.Designer.cs">
+    <Compile Include="Forms\frmFormFromRec.Designer.cs">
+      <DependentUpon>frmFormFromRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMatEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMatEdit.Designer.cs">
+      <DependentUpon>frmMatEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMaterialsMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMaterialsMain.Designer.cs">
+      <DependentUpon>frmMaterialsMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNewRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNewRecipe.Designer.cs">
+      <DependentUpon>frmNewRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaticClasses\BRExceptionCleaner.cs" />
+    <Compile Include="StaticClasses\CoreWSCombos.cs" />
+    <Compile Include="StaticClasses\InvWSCombos.cs" />
+    <Compile Include="StaticClasses\InvWSOutcome.cs" />
+    <Compile Include="StaticClasses\RichTextBoxExtensions.cs" />
+    <Compile Include="WSWrappers\BRCatalogWrapper.cs" />
+    <Compile Include="WSWrappers\BRProcessWrapper.cs" />
+    <Compile Include="WSWrappers\BROutlineWrapper.cs" />
+    <Compile Include="WSWrappers\BROutParamWrapper.cs" />
+    <Compile Include="WSWrappers\BRQueryWrapper.cs" />
+    <Compile Include="WSWrappers\BRJobWrapper.cs" />
+    <Compile Include="WSWrappers\BRTaskWrapper.cs" />
+    <Compile Include="StaticClasses\ErrorParser.cs" />
+    <Compile Include="StaticClasses\ExcelToDataSet.cs" />
+    <Compile Include="StaticClasses\FilterGenerator.cs" />
+    <Compile Include="Forms\frmQueries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQueries.Designer.cs">
       <DependentUpon>frmQueries.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCatalog.cs">
+    <Compile Include="Forms\frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCatalog.Designer.cs">
+    <Compile Include="Forms\frmCatalog.Designer.cs">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogOn.cs">
@@ -74,45 +130,68 @@
     <Compile Include="frmLogOn.Designer.cs">
       <DependentUpon>frmLogOn.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmParameterAdd.cs">
+    <Compile Include="Forms\frmParameterAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmParameterAdd.Designer.cs">
+    <Compile Include="Forms\frmParameterAdd.Designer.cs">
       <DependentUpon>frmParameterAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSelect.cs">
+    <Compile Include="Forms\frmSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSelect.Designer.cs">
+    <Compile Include="Forms\frmSelect.Designer.cs">
       <DependentUpon>frmSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNodeByPath.cs" />
-    <Compile Include="frmTasks.cs">
+    <Compile Include="StaticClasses\AddNodeByPath.cs" />
+    <Compile Include="Forms\frmTaskImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTasks.Designer.cs">
+    <Compile Include="Forms\frmTaskImport.Designer.cs">
+      <DependentUpon>frmTaskImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTasks.Designer.cs">
       <DependentUpon>frmTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataTableConverter.cs" />
-    <Compile Include="NodeOperations.cs" />
+    <Compile Include="StaticClasses\DataTableConverter.cs" />
+    <Compile Include="StaticClasses\NodeOperations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmQueries.resx">
+    <Compile Include="WSWrappers\BRInvWrapper.cs" />
+    <Compile Include="StaticClasses\MaterialGridConverter.cs" />
+    <EmbeddedResource Include="Forms\frmFormFromRec.resx">
+      <DependentUpon>frmFormFromRec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMatEdit.resx">
+      <DependentUpon>frmMatEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMaterialsMain.resx">
+      <DependentUpon>frmMaterialsMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewRecipe.resx">
+      <DependentUpon>frmNewRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQueries.resx">
       <DependentUpon>frmQueries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCatalog.resx">
+    <EmbeddedResource Include="Forms\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogOn.resx">
       <DependentUpon>frmLogOn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmParameterAdd.resx">
+    <EmbeddedResource Include="Forms\frmParameterAdd.resx">
       <DependentUpon>frmParameterAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSelect.resx">
+    <EmbeddedResource Include="Forms\frmSelect.resx">
       <DependentUpon>frmSelect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTasks.resx">
+    <EmbeddedResource Include="Forms\frmTaskImport.resx">
+      <DependentUpon>frmTaskImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTasks.resx">
       <DependentUpon>frmTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -137,6 +216,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

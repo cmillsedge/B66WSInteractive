@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IO.Swagger.Api;
-using IO.Swagger.Model;
+using BioRails.Core.Api;
+using BioRails.Core.Model;
 
 namespace BR6WSInteractive
 {
@@ -24,9 +24,10 @@ namespace BR6WSInteractive
             try
             {
                 string url = txtURL.Text.TrimEnd('/');
+                Console.WriteLine(url + "/api/v6");
                 SessionsApi s = new SessionsApi(url + "/api/v6");
                 Session key = s.Login(txtUser.Text, txtPass.Text);
-                Console.WriteLine(key.SessionId);
+
                 using (frmSelect frmSelect = new frmSelect(key, url + "/api/v6"))
                 {
                     frmSelect.Location = this.Location;

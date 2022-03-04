@@ -72,7 +72,7 @@ namespace BR6WSInteractive
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(280, 20);
             this.txtURL.TabIndex = 3;
-            this.txtURL.Text = "https://biorails.dev.1910genetics.com/";
+            this.txtURL.Text = "https://live5-biorails.alces.co.uk/";
             // 
             // txtUser
             // 
@@ -80,15 +80,16 @@ namespace BR6WSInteractive
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(280, 20);
             this.txtUser.TabIndex = 4;
-            this.txtUser.Text = "admin";
+            this.txtUser.Text = "support";
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(131, 92);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(280, 20);
             this.txtPass.TabIndex = 5;
-            this.txtPass.Text = "biorails2021";
+            this.txtPass.Text = "testing";
             // 
             // btnConnect
             // 
