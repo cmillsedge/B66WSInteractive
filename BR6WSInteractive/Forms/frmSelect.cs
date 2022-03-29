@@ -36,7 +36,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -57,7 +56,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -78,7 +76,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -99,7 +96,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -109,7 +105,22 @@ namespace BR6WSInteractive
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (frmInvTest frmInvTesting = new frmInvTest(_session, _url))
+                {
+                    frmInvTesting.Location = this.Location;
+                    this.Hide();
+                    frmInvTesting.ShowDialog();
 
+                }
+                //frmSel closed re-display logon
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnMaterials_Click(object sender, EventArgs e)
@@ -125,7 +136,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {

@@ -72,7 +72,7 @@ namespace BR6WSInteractive
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(280, 20);
             this.txtURL.TabIndex = 3;
-            this.txtURL.Text = "https://live5-biorails.alces.co.uk/";
+            this.txtURL.Text = "https://live4-biorails.alces.co.uk/";
             // 
             // txtUser
             // 

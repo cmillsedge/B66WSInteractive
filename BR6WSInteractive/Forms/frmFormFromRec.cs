@@ -46,7 +46,7 @@ namespace BR6WSInteractive
             txtMType.Text = rec.MaterialTypeName;
             txtRecipe.Text = rec.Name;
             //set recipe properties in grid
-            MaterialDataGridConverter.ConvertMaterialPropsToDataGrid(_InvWS, rec.Properties, rec.MaterialTypeName, dgvMat);
+            MaterialDataGridConverter.ConvertMaterialPropsToDataGrid(_InvWS, rec.CustomProperties, rec.MaterialTypeName, dgvMat);
             MaterialDataGridConverter.ConvertRecipeIngredientsToDataGrid(rec.Ingredients, dgvIngredients);
 
         }
@@ -102,8 +102,8 @@ namespace BR6WSInteractive
                 mat.SampleTypeName = txtMType.Text;
                 mat.Description= txtDescrip.Text;
                 //properties
-                MaterialPropertyArray nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
-                mat.Properties = nvs;
+                Dictionary<string, BR.Inv.Model.StringArray> nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
+                mat.CustomProperties = nvs;
                 //components
                 MaterialComponentArray comps = MaterialDataGridConverter.ConvertDataGridToMaterialComponents(dgvIngredients);
                 mat.MaterialComponents = comps;

@@ -13,7 +13,7 @@ namespace BR6WSInteractive
     public static class MaterialDataGridConverter
     {
         //this class is designed to convert a datagrid into an array of order items or vice versa
-        public static void ConvertMaterialPropsToDataGrid(BRInvWrapper invWS, MaterialPropertyArray matProps, string materialType, DataGridView dgvMat)
+        public static void ConvertMaterialPropsToDataGrid(BRInvWrapper invWS, Dictionary<string, StringArray> matProps, string materialType, DataGridView dgvMat)
         {
             //this method is designed to populate a datagrid based on the properties of an existing BioRails materials
             try
@@ -23,11 +23,10 @@ namespace BR6WSInteractive
                 {
                     dgvMat.Rows.Add(matProps.Count);
                     //for each property on the material set datagrid values
-                    foreach (MaterialProperty mp in matProps)
+                    foreach (KeyValuePair<string, StringArray> mp in matProps)
                     {
-
                         //populate rows
-                        dgvMat[0, nloop].Value = mp.Name;
+                        dgvMat[0, nloop].Value = mp.Key.ToString();
                         foreach (string v in mp.Value)
                         {
                             //need to loop through values
@@ -35,6 +34,7 @@ namespace BR6WSInteractive
                         }
                         nloop += 1;
                     }
+
                 }
                 else
                 {
@@ -56,33 +56,32 @@ namespace BR6WSInteractive
                 MessageBox.Show("An error occurred. " + ex.Message, "Error");
             }
         }
-        public static MaterialPropertyArray ConvertDataGridToProperties(DataGridView dgvMat)
+        public static Dictionary<string, StringArray> ConvertDataGridToProperties(DataGridView dgvMat)
         {
             //this method is designed to create an array of name values based on the contents of a datagrid
             NameValueCollection namevals = CharacterizeGrid(dgvMat);
             int nUnique = UniqueDGVNames(dgvMat);
-            MaterialPropertyArray nvs = new MaterialPropertyArray();
+            Dictionary<string, StringArray> nvs = new Dictionary<string, StringArray>();
             try
             {
                 //for each item in the name value collection loop through and set names and values appropriately
                 //create an array of namevalues based on the number of columns in the datagrid minus the conserved columns
                 for (int i = 0; i < namevals.Count; i++)
                 {
-                    MaterialProperty mp = new MaterialProperty();
-                    mp.Name = namevals.GetKey(i);
+                    
+                    string key = namevals.GetKey(i);
                     string value = namevals.Get(i);
+                    StringArray vallist = new StringArray();
                     if (value != null)
                     {
                         string[] values = value.Split(',');
-                        StringArray vallist = new StringArray();
                         foreach (string s in values)
                         {
                             vallist.Add(s);
                         }
-                        mp.Value = vallist;
 
                     }
-                    nvs.Add(mp);
+                    nvs.Add(key, vallist);
 
                 }
 

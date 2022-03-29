@@ -18,11 +18,12 @@ namespace BR6WSInteractive
         {
             _session = session;
             _url = url;
-            BR.Inv.Model.NamedArray thing = new BR.Inv.Model.NamedArray();
         }
         public BRInvWrapper()
         {
         }
+
+
         public SampleTypeArray GetAllSampleTypes()
         {
             SampleTypesApi sampAPI = new SampleTypesApi();
@@ -70,6 +71,18 @@ namespace BR6WSInteractive
             MaterialApi materialApi = new MaterialApi();
             BR.Inv.Model.JobReport jb = materialApi.MaterialUploadJob(_session.SessionKey, materials);
             return jb;
+        }
+
+        public void MoveContainer(string cont, string Location, string slot)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerMove(_session.SessionKey, cont, Location, slot);
+        }
+
+        public void ProtectContainer(string cont, string protector, string protectionType)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerProtect(_session.SessionKey, cont, protector, protectionType); 
         }
 
         public Material MaterialUpdate(Material material)

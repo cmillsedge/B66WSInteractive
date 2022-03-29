@@ -42,7 +42,7 @@ namespace BR6WSInteractive
             txtDescrip.Text = mat.Description;
             txtSampleType.Text = mat.SampleTypeName;
             //populate custom properties datagrid
-            MaterialDataGridConverter.ConvertMaterialPropsToDataGrid(_InvWS, mat.Properties, mat.SampleTypeName, dgvMat);
+            MaterialDataGridConverter.ConvertMaterialPropsToDataGrid(_InvWS, mat.CustomProperties, mat.SampleTypeName, dgvMat);
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -59,8 +59,8 @@ namespace BR6WSInteractive
                 mat.Description = txtDescrip.Text;
                 mat.SampleTypeName = txtSampleType.Text;
                 //set array properties
-                MaterialPropertyArray nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
-                mat.Properties = nvs;
+                Dictionary<string, BR.Inv.Model.StringArray> nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
+                mat.CustomProperties = nvs;
                 mat.MaterialComponents = comps;
                 Material matEdit = _InvWS.MaterialUpdate(mat);
                 RichTextBoxExtensions.AppendText(rtbWSOutput, "Material Edit - Successful", Color.Green, _normFont);

@@ -85,8 +85,8 @@ namespace BR6WSInteractive
                 //mat.recipe = txtRecipe.Text;
                 mat.Description = txtDescrip.Text;
                 //properties
-                MaterialPropertyArray nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
-                mat.Properties = nvs;
+                Dictionary<string, BR.Inv.Model.StringArray> nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
+                mat.CustomProperties = nvs;
                 //components
                 MaterialRecipeIngredientArray comps = MaterialDataGridConverter.ConvertDataGridToRecipeIngredients(dgvIngredients);
                 mat.Ingredients = comps;

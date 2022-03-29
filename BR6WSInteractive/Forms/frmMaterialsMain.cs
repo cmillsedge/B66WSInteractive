@@ -128,7 +128,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -169,7 +168,6 @@ namespace BR6WSInteractive
                 }
                 //frmSel closed re-display logon
                 this.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {

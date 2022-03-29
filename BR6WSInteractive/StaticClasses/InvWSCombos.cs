@@ -20,6 +20,26 @@ namespace BR6WSInteractive
             }
         }
 
+        public static void PopulateCombo(ComboBox cmb, ContainerTypeArray namevalues)
+        {
+            //populate a combo based on an inventory named array
+            cmb.Items.Clear();
+            foreach (ContainerType cl in namevalues)
+            {
+                cmb.Items.Add(cl.Name);
+            }
+        }
+
+        public static void PopulateCombo(ComboBox cmb, ContainerLayoutArray namevalues)
+        {
+            //populate a combo based on an inventory named array
+            cmb.Items.Clear();
+            foreach (ContainerLayout cl in namevalues)
+            {
+                cmb.Items.Add(cl.Name);
+            }
+        }
+
         public static void PopulateCombo(ComboBox cmb, String[] namevalues)
         {
             //populate a combo based on an inventory named array

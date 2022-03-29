@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BR6WSInteractive", "BR6WSInteractive\BR6WSInteractive.csproj", "{D479707F-0911-4D51-9846-C24B3E7F7CC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRWSTester", "..\..\BRails6_GUI_WS_Tester\BRails_GUI_WS_Tester\BRWSTester\BRWSTester\BRWSTester.csproj", "{D77E95F2-43C7-4AFF-9EBA-C1D31F1CD1CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRWSTester", "..\..\BRails5_GUI_WS_Tester\BRails_GUI_WS_Tester\BRWSTester\BRWSTester\BRWSTester.csproj", "{D77E95F2-43C7-4AFF-9EBA-C1D31F1CD1CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
