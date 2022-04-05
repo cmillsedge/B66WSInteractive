@@ -94,18 +94,24 @@ namespace BR6WSInteractive
 
         private void ContainerSolvate()
         {
-            //try
-            //{   RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Solvate", Color.Black, _bigFont);
-            //    double vol = Decimal.ToDouble(numVol.Value);
-            //    double conc = Decimal.ToDouble(numConc.Value);
-            //    //solvate the container passing in the container name, new container type (liquid), desired volume and conc with unit and solvent details
-            //    BRInvReference.Status st = _InvWS.WSClient.container_solvate(_session.session_id, txtSolvTube.Text, cmbTypes.Text, vol, conc, txtUnit.Text, "DMSO", 100.0);
-            //    InvWSOutcome.PostWSOutCome(st, "Container Solvate ", rtbWSOutput);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("An error occurred. " + ex.Message, "Error");
-            //}
+            try
+            {
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Solvate", Color.Black, _bigFont);
+                double vol = Decimal.ToDouble(numVol.Value);
+                double conc = Decimal.ToDouble(numConc.Value);
+                //solvate the container passing in the container name, new container type (liquid), desired volume and conc with unit and solvent details
+                _invOps.SolvateContainer(txtSolvTube.Text, cmbTypes.Text, vol, conc, txtUnit.Text, "DMSO", 100);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Solvate Succesful", Color.Green, _normFont);
+            }
+            catch (BR.Inv.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Solvate Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred. " + ex.Message, "Error");
+            }
         }
 
         private void UpdateTube()

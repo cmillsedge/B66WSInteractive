@@ -42,6 +42,8 @@ namespace BR6WSInteractive
             this.lblContainers = new System.Windows.Forms.Label();
             this.btnMaterials = new System.Windows.Forms.Button();
             this.lblMaterials = new System.Windows.Forms.Label();
+            this.lblOrder = new System.Windows.Forms.Label();
+            this.btnOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCatalog
@@ -158,11 +160,32 @@ namespace BR6WSInteractive
             this.lblMaterials.TabIndex = 11;
             this.lblMaterials.Text = "Materials";
             // 
+            // lblOrder
+            // 
+            this.lblOrder.AutoSize = true;
+            this.lblOrder.Location = new System.Drawing.Point(746, 16);
+            this.lblOrder.Name = "lblOrder";
+            this.lblOrder.Size = new System.Drawing.Size(47, 13);
+            this.lblOrder.TabIndex = 13;
+            this.lblOrder.Text = "Ordering";
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.Location = new System.Drawing.Point(743, 36);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(63, 57);
+            this.btnOrder.TabIndex = 12;
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             // frmSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 120);
+            this.ClientSize = new System.Drawing.Size(828, 120);
+            this.Controls.Add(this.lblOrder);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.lblMaterials);
             this.Controls.Add(this.btnMaterials);
             this.Controls.Add(this.lblContainers);
@@ -198,5 +221,7 @@ namespace BR6WSInteractive
         private System.Windows.Forms.Label lblContainers;
         private System.Windows.Forms.Button btnMaterials;
         private System.Windows.Forms.Label lblMaterials;
+        private System.Windows.Forms.Label lblOrder;
+        private System.Windows.Forms.Button btnOrder;
     }
 }

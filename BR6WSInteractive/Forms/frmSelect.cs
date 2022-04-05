@@ -142,5 +142,25 @@ namespace BR6WSInteractive
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (frmOrderTest frmOTest = new frmOrderTest(_session, _url))
+                {
+                    frmOTest.Location = this.Location;
+                    this.Hide();
+                    frmOTest.ShowDialog();
+
+                }
+                //frmSel closed re-display logon
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -56,9 +56,11 @@
     <Reference Include="BioRails.Core">
       <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsCore\src\BioRails.Core\bin\Release\BioRails.Core.dll</HintPath>
     </Reference>
-    <Reference Include="BR.Inv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BR.Inv">
       <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsInvNew\src\BR.Inv\bin\Debug\BR.Inv.dll</HintPath>
+    </Reference>
+    <Reference Include="BR.Ord">
+      <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsOrder\src\BR.Ord\bin\Debug\BR.Ord.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -103,12 +105,33 @@
     <Compile Include="Forms\frmNewRecipe.Designer.cs">
       <DependentUpon>frmNewRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmOrdCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOrdCreate.Designer.cs">
+      <DependentUpon>frmOrdCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOrderTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOrderTest.Designer.cs">
+      <DependentUpon>frmOrderTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOrdUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOrdUpdate.Designer.cs">
+      <DependentUpon>frmOrdUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticClasses\BRExceptionCleaner.cs" />
     <Compile Include="StaticClasses\CoreWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSOutcome.cs" />
+    <Compile Include="StaticClasses\OrderDataGridConverter.cs" />
+    <Compile Include="StaticClasses\OrdWSCombos.cs" />
     <Compile Include="StaticClasses\RichTextBoxExtensions.cs" />
     <Compile Include="WSWrappers\BRCatalogWrapper.cs" />
+    <Compile Include="WSWrappers\BROrderWrapper.cs" />
     <Compile Include="WSWrappers\BRProcessWrapper.cs" />
     <Compile Include="WSWrappers\BROutlineWrapper.cs" />
     <Compile Include="WSWrappers\BROutParamWrapper.cs" />
@@ -181,6 +204,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmNewRecipe.resx">
       <DependentUpon>frmNewRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOrdCreate.resx">
+      <DependentUpon>frmOrdCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOrderTest.resx">
+      <DependentUpon>frmOrderTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOrdUpdate.resx">
+      <DependentUpon>frmOrdUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmQueries.resx">
       <DependentUpon>frmQueries.cs</DependentUpon>

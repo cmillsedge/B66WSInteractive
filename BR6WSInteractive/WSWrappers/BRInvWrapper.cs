@@ -85,6 +85,12 @@ namespace BR6WSInteractive
             contAPI.ContainerProtect(_session.SessionKey, cont, protector, protectionType); 
         }
 
+        public void SolvateContainer(string cont, string tubeTypeName, double volume, double concentration, string concUnit, string solventName, int solventConc)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerSolvate(_session.SessionKey, cont, tubeTypeName, volume, concentration, concUnit, solventName, solventConc);
+        }
+
         public Material MaterialUpdate(Material material)
         {
             MaterialApi materialApi = new MaterialApi();
