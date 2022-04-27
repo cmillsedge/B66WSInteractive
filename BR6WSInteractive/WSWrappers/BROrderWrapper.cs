@@ -47,14 +47,28 @@ namespace BR6WSInteractive
             return myOrder;
         }
 
-        public Order UpdateOrderState(string order)
+        public Order CreateOrder(Order order)
         {
             OrderApi ordAPI = new OrderApi();
-            Order myOrder = ordAPI.OrderGet(_session.SessionKey, order);
+            Order myOrder = ordAPI.OrderCreate(_session.SessionKey, order);
             return myOrder;
         }
 
-        public OrderItemArray UpdateOrderItems(OrderItemArray oItems)
+        //public Order CheckOrder(Order order)
+        //{
+        //    OrderApi ordAPI = new OrderApi();
+        //    Order myOrder = ordAPI.O(_session.SessionKey, order);
+        //    return myOrder;
+        //}
+
+        public Order UpdateOrderState(string order, string state)
+        {
+            OrderApi ordAPI = new OrderApi();
+            Order myOrder = ordAPI.OrderUpdateState(_session.SessionKey, order, state);
+            return myOrder;
+        }
+
+        public OrderItemArray UpdateOrderItems(OrderItemBulk oItems)
         {
             OrderItemApi oItemAPI = new OrderItemApi();
             OrderItemArray myItems = oItemAPI.OrderItemSave(_session.SessionKey, oItems);

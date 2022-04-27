@@ -72,10 +72,12 @@ namespace BR6WSInteractive
         {
             try
             {
+                OrderItemBulk oBulk = new OrderItemBulk();  
                 //create order item collection and populate based on contents of data grid which may have been edited by end user
                 OrderItemArray oitems = OrderDataGridConverter.ConvertDataGridToUpdateOrderItems(dgvOrder);
+                oBulk.OrderItems = oitems;
                 //attempt to update order items
-                OrderItemArray updatedItems = _ordOps.UpdateOrderItems(oitems);
+                OrderItemArray updatedItems = _ordOps.UpdateOrderItems(oBulk);
                 RichTextBoxExtensions.AppendText(rtbWSOutput, "Updating Order Items Successful", Color.Green, _normFont);
             }
             catch (BR.Ord.Client.ApiException apiEx)
@@ -91,25 +93,30 @@ namespace BR6WSInteractive
 
         private void btnOrdState_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (txtOrderName.Text != "" & cmbState.Text != "")
-            //    {
-            //        //attempt to update order items
-            //        BROrderReference.Status os = _ordWS.WSClient.order_update_state(_session.session_id, txtOrderName.Text, cmbState.Text);
-            //        //MessageBox("This method does not exist in 6.0. So commented out");
-            //        //display update outcome on form
-            //        OrdWSOutcome.ProcessUpdateStatus(os, rtbWSOutput);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Please enter an order and a state", "Guidance");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {
+                if (txtOrderName.Text != "" & cmbState.Text != "")
+                {
+                    Order ordid = _ordOps.GetOrder(txtOrderName.Text);
+                    //attempt to update order state
+                    Order ord = _ordOps.UpdateOrderState(ordid.Id, cmbState.Text);
+                    //display update outcome on form
+                    RichTextBoxExtensions.AppendText(rtbWSOutput, "Updating Order State Successful", Color.Green, _normFont);
+                }
+                else
+                {
+                    MessageBox.Show("Please enter an order and a state", "Guidance");
+                }
+            }
+            catch (BR.Ord.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Updating Order State Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using BR.Inv.Model;
 using BR.Inv.Api;
 
 
+
 namespace BR6WSInteractive
 {
      public class BRInvWrapper
@@ -23,6 +24,50 @@ namespace BR6WSInteractive
         {
         }
 
+        public Container GetContainer(string containerName)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            Container myContainer = containersApi.ContainerFind(_session.SessionKey, containerName);
+            return myContainer;
+        }
+
+        public Container CreateContainer(Container myContainer)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            Container newContainer = containersApi.ContainerCreate(_session.SessionKey, myContainer);
+            return newContainer;
+        }
+
+        public Container UpdateContainerDescription(string containerName, Container myContainer)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            Container newContainer = containersApi.ContainerEdit(_session.SessionKey,containerName, myContainer);
+            return newContainer;
+        }
+
+        public void BinContainer(string containerName)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            containersApi.ContainerMove (_session.SessionKey, containerName, "Bin","A1");
+        }
+
+        public void MoveContainer(string cont, string Location, string slot)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerMove(_session.SessionKey, cont, Location, slot);
+        }
+
+        public void ProtectContainer(string cont, string protector, string protectionType)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerProtect(_session.SessionKey, cont, protector, protectionType);
+        }
+
+        public void SolvateContainer(string cont, string tubeTypeName, double volume, double concentration, string concUnit, string solventName, int solventConc)
+        {
+            ContainerApi contAPI = new ContainerApi();
+            contAPI.ContainerSolvate(_session.SessionKey, cont, tubeTypeName, volume, concentration, concUnit, solventName, solventConc);
+        }
 
         public SampleTypeArray GetAllSampleTypes()
         {
@@ -71,24 +116,6 @@ namespace BR6WSInteractive
             MaterialApi materialApi = new MaterialApi();
             BR.Inv.Model.JobReport jb = materialApi.MaterialUploadJob(_session.SessionKey, materials);
             return jb;
-        }
-
-        public void MoveContainer(string cont, string Location, string slot)
-        {
-            ContainerApi contAPI = new ContainerApi();
-            contAPI.ContainerMove(_session.SessionKey, cont, Location, slot);
-        }
-
-        public void ProtectContainer(string cont, string protector, string protectionType)
-        {
-            ContainerApi contAPI = new ContainerApi();
-            contAPI.ContainerProtect(_session.SessionKey, cont, protector, protectionType); 
-        }
-
-        public void SolvateContainer(string cont, string tubeTypeName, double volume, double concentration, string concUnit, string solventName, int solventConc)
-        {
-            ContainerApi contAPI = new ContainerApi();
-            contAPI.ContainerSolvate(_session.SessionKey, cont, tubeTypeName, volume, concentration, concUnit, solventName, solventConc);
         }
 
         public Material MaterialUpdate(Material material)

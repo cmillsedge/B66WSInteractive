@@ -7,6 +7,7 @@ C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInter
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmNewRecipe.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmOrdCreate.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmOrderTest.resources
+C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmOrdUpdate.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmQueries.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmCatalog.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmLogOn.resources
@@ -30,8 +31,7 @@ C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInter
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Debug\BR.Ord.pdb
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Debug\Newtonsoft.Json.xml
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Debug\RestSharp.xml
-C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.csproj.AssemblyReference.cache
-C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.frmOrdUpdate.resources
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.csproj.CopyComplete
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.exe
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.pdb
+C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Debug\BR6WSInteractive.csproj.AssemblyReference.cache

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.ComponentModel;
+//using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using BioRails.Core.Api;
@@ -64,32 +64,32 @@ namespace BR6WSInteractive
 }
         private void DupTube()
         {   //instantiate two container objects for duplication
-            //BRInvReference.Container myContainer = new BRInvReference.Container();
-            //BRInvReference.Container myNewContainer = new BRInvReference.Container();
-            //try
-            //{
-            //    RichTextBoxExtensions.AppendText(rtbWSOutput, "Clone Container", Color.Black, _bigFont);
-            //    //get a container using container_get method
-            //    myContainer = _InvWS.WSClient.container_get(_session.session_id, txtSource.Text);
-            //    //set new container equal to original
-            //    myNewContainer = new BRInvReference.Container();
-            //    myNewContainer = myContainer;
-            //    //change container name and set id to null which is needed for creation
-            //    myNewContainer.name = txtCloned.Text;
-            //    myNewContainer.id = null;
-            //    //Due to SOAP issue with nulls have to simulate a null value with a negative value here
-            //    if (myNewContainer.samples[0].concentration_value == 0)
-            //    { myContainer.samples[0].concentration_value = -1.0; }
-            //    //call container create with the new name from the form
-            //    BRInvReference.Status st = _InvWS.WSClient.container_create(_session.session_id, myNewContainer); 
-            //    //process the outcome using standard class
-            //    InvWSOutcome.PostWSOutCome(st, "Clone Tube ", rtbWSOutput);
+            Container myContainer = new Container();
+            Container myNewContainer = new Container();
+            try
+            {
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Clone Container", Color.Black, _bigFont);
+                //get a container using container_get method
                 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("An error occurred. " + ex.Message, "Error");
-            //}
+                myContainer = _invOps.GetContainer(txtSource.Text);
+                //set new container equal to original
+                myNewContainer = myContainer;
+                //change container name and set id to null which is needed for creation
+                myNewContainer.Name = txtCloned.Text;
+                myNewContainer.Id = null;
+                myContainer = _invOps.CreateContainer(myNewContainer);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Duplicate Succesful", Color.Green, _normFont);
+
+            }
+            catch (BR.Inv.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Duplicate Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred. " + ex.Message, "Error");
+            }
         }
 
         private void ContainerSolvate()
@@ -116,22 +116,26 @@ namespace BR6WSInteractive
 
         private void UpdateTube()
         {
-            //try
-            //{
-            //    RichTextBoxExtensions.AppendText(rtbWSOutput, "Update Tube", Color.Black, _bigFont);
-            //    //Get a container
-            //    BRInvReference.Container myContainer = _InvWS.WSClient.container_get(_session.session_id, txtUpdate.Text);
-            //    //Change the description property or any other properties you like
-            //    myContainer.description = txtDescrip.Text;
-            //    //Call container update returning a status object
-            //    BRInvReference.Status st = _InvWS.WSClient.container_update(_session.session_id, txtUpdate.Text, myContainer);
-            //    //Update the form based on the status object
-            //    InvWSOutcome.PostWSOutCome(st, "Update Tube ", rtbWSOutput);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("An error occurred. " + ex.Message, "Error");
-            //}
+            try
+            {
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Update Tube Description", Color.Black, _bigFont);
+                //Get a container
+                Container myContainer = _invOps.GetContainer(txtUpdate.Text);
+                //Change the description property or any other properties you like
+                myContainer.Description = txtDescrip.Text;
+                //Call container update returning a status object
+                Container myNewContainer = _invOps.UpdateContainerDescription(txtUpdate.Text, myContainer);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Duplicate Succesful", Color.Green, _normFont);
+            }
+            catch (BR.Inv.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Update Tube Description Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred. " + ex.Message, "Error");
+            }
         }
        
 
@@ -160,18 +164,23 @@ namespace BR6WSInteractive
         }
         private void ContainerBin()
         {
-            //try
-            //{ 
-            //    RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Bin", Color.Black, _bigFont);
-            //    //using a container name , move that container to the bin
-            //    BRInvReference.Status st = _InvWS.WSClient.move_container_to_bin(_session.session_id, txtTubMove.Text);
-            //    //Update the form with the outcome
-            //    InvWSOutcome.PostWSOutCome(st, "Container Bin ", rtbWSOutput);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("An error occurred. " + ex.Message, "Error");
-            //}
+            try
+            {
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Bin", Color.Black, _bigFont);
+                //using a container name , move that container to the bin
+                _invOps.BinContainer(txtTubMove.Text);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Bin Succesful", Color.Green, _normFont);
+                //Update the form with the outcome
+            }
+            catch (BR.Inv.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Container Bin Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred. " + ex.Message, "Error");
+            }
         }
         private void BtnProtect_Click(object sender, EventArgs e)
         {
@@ -247,32 +256,32 @@ namespace BR6WSInteractive
         {
             //simple method to open a file browse dialog restricted to Excel files for use with the import plate method 
             //See supporting files folder in this project for the only supported file format. 
-            //OpenFileDialog dialog = new OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
 
-            //try
-            //{
-            //    //dialog.Filter = "Comma Seperated Files (*.csv)|*.csv|Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            //    dialog.Filter = "New Excel(*.xlsx)|*.xlsx";
-            //    dialog.InitialDirectory = initialDirectory;
-            //    dialog.Title = "Select an Excel File ..";
-            //    dialog.FileName = "";
+            try
+            {
+                //dialog.Filter = "Comma Seperated Files (*.csv)|*.csv|Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+                dialog.Filter = "New Excel(*.xlsx)|*.xlsx";
+                dialog.InitialDirectory = initialDirectory;
+                dialog.Title = "Select an Excel File ..";
+                dialog.FileName = "";
 
-            //    if (dialog.ShowDialog() == DialogResult.OK)
-            //    {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
 
-            //        //sStartPath = System.IO.Path.GetDirectoryName(dialog.FileName);
-            //        return (dialog.FileName);
-            //    }
-            //    else
-            //    {
-            //        return (string.Empty);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //    return (string.Empty);
-            //}
+                    //sStartPath = System.IO.Path.GetDirectoryName(dialog.FileName);
+                    return (dialog.FileName);
+                }
+                else
+                {
+                    return (string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                return (string.Empty);
+            }
             return String.Empty;
 
         }
