@@ -49,7 +49,8 @@ namespace BR6WSInteractive
                 foreach (SampleType type in myTypes)
                 {
                     cmbMTypes.Items.Add(type.Name);
-                    cmbSampTypes.Items.Add(type.Name);   
+                    cmbSampTypes.Items.Add(type.Name);
+                    cmbRecMType.Items.Add(type.Name);
                 }
             }
             catch (Exception ex)

@@ -101,6 +101,19 @@ namespace BR6WSInteractive
                 }
                 mat.SampleTypeName = txtMType.Text;
                 mat.Description= txtDescrip.Text;
+                if (txtMw.Text != null)
+                {
+                    Double dval;
+                    if (Double.TryParse(txtMw.Text, out dval))
+                    {
+                        dval = Double.Parse(txtMw.Text);
+                    }
+                    else
+                    {
+                        dval = 0.0;
+                    }
+                    mat.MolecularMass = dval;
+                }
                 //properties
                 Dictionary<string, BR.Inv.Model.StringArray> nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
                 mat.CustomProperties = nvs;

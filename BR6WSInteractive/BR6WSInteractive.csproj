@@ -56,10 +56,12 @@
     <Reference Include="BioRails.Core">
       <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsCore\src\BioRails.Core\bin\Release\BioRails.Core.dll</HintPath>
     </Reference>
-    <Reference Include="BR.Inv">
-      <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsInvNew\src\BR.Inv\bin\Debug\BR.Inv.dll</HintPath>
+    <Reference Include="BR.Inv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsInv\src\BR.Inv\bin\Debug\BR.Inv.dll</HintPath>
     </Reference>
-    <Reference Include="BR.Ord">
+    <Reference Include="BR.Ord, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Desktop\Swagger\BioRailsOrder\src\BR.Ord\bin\Debug\BR.Ord.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -80,6 +82,12 @@
     </Compile>
     <Compile Include="Forms\frmFormFromRec.Designer.cs">
       <DependentUpon>frmFormFromRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIndTube.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIndTube.Designer.cs">
+      <DependentUpon>frmIndTube.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmInvTest.cs">
       <SubType>Form</SubType>
@@ -123,13 +131,28 @@
     <Compile Include="Forms\frmOrdUpdate.Designer.cs">
       <DependentUpon>frmOrdUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmShipments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmShipments.Designer.cs">
+      <DependentUpon>frmShipments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWatson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWatson.Designer.cs">
+      <DependentUpon>frmWatson.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticClasses\BRExceptionCleaner.cs" />
     <Compile Include="StaticClasses\CoreWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSOutcome.cs" />
     <Compile Include="StaticClasses\OrderDataGridConverter.cs" />
     <Compile Include="StaticClasses\OrdWSCombos.cs" />
+    <Compile Include="StaticClasses\PlateData.cs" />
+    <Compile Include="StaticClasses\PlateFromDataSet.cs" />
     <Compile Include="StaticClasses\RichTextBoxExtensions.cs" />
+    <Compile Include="StaticClasses\TubesFromDataSet.cs" />
     <Compile Include="WSWrappers\BRCatalogWrapper.cs" />
     <Compile Include="WSWrappers\BROrderWrapper.cs" />
     <Compile Include="WSWrappers\BRProcessWrapper.cs" />
@@ -193,6 +216,9 @@
     <EmbeddedResource Include="Forms\frmFormFromRec.resx">
       <DependentUpon>frmFormFromRec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIndTube.resx">
+      <DependentUpon>frmIndTube.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInvTest.resx">
       <DependentUpon>frmInvTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmShipments.resx">
+      <DependentUpon>frmShipments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWatson.resx">
+      <DependentUpon>frmWatson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogOn.resx">
       <DependentUpon>frmLogOn.cs</DependentUpon>

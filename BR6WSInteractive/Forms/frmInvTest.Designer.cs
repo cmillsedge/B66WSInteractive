@@ -681,7 +681,7 @@
             this.btmImpTubes.Name = "btmImpTubes";
             this.btmImpTubes.Size = new System.Drawing.Size(126, 23);
             this.btmImpTubes.TabIndex = 13;
-            this.btmImpTubes.Text = "Import Tubes";
+            this.btmImpTubes.Text = "Bulk Import Tubes";
             this.btmImpTubes.UseVisualStyleBackColor = true;
             this.btmImpTubes.Click += new System.EventHandler(this.btmImpTubes_Click);
             // 

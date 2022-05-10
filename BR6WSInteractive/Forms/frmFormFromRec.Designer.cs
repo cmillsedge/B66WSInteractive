@@ -72,6 +72,8 @@
             this.lblCompQty = new System.Windows.Forms.Label();
             this.lblCompName = new System.Windows.Forms.Label();
             this.lblPerc = new System.Windows.Forms.Label();
+            this.lblMw = new System.Windows.Forms.Label();
+            this.txtMw = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngredients)).BeginInit();
             this.grpRowEdit.SuspendLayout();
@@ -187,7 +189,7 @@
             // lblRecIngred
             // 
             this.lblRecIngred.AutoSize = true;
-            this.lblRecIngred.Location = new System.Drawing.Point(20, 183);
+            this.lblRecIngred.Location = new System.Drawing.Point(20, 222);
             this.lblRecIngred.Name = "lblRecIngred";
             this.lblRecIngred.Size = new System.Drawing.Size(116, 13);
             this.lblRecIngred.TabIndex = 22;
@@ -203,7 +205,7 @@
             this.TheoreticalPercentage,
             this.ComponentName,
             this.ComponentQuantity});
-            this.dgvIngredients.Location = new System.Drawing.Point(23, 209);
+            this.dgvIngredients.Location = new System.Drawing.Point(23, 248);
             this.dgvIngredients.Name = "dgvIngredients";
             this.dgvIngredients.Size = new System.Drawing.Size(1130, 167);
             this.dgvIngredients.TabIndex = 21;
@@ -259,7 +261,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1078, 490);
+            this.btnCreate.Location = new System.Drawing.Point(1078, 529);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 23;
@@ -345,7 +347,7 @@
             this.grpRowEdit.Controls.Add(this.lblCommonName);
             this.grpRowEdit.Controls.Add(this.lblSampleType);
             this.grpRowEdit.Controls.Add(this.lblRole);
-            this.grpRowEdit.Location = new System.Drawing.Point(23, 392);
+            this.grpRowEdit.Location = new System.Drawing.Point(23, 431);
             this.grpRowEdit.Name = "grpRowEdit";
             this.grpRowEdit.Size = new System.Drawing.Size(1130, 86);
             this.grpRowEdit.TabIndex = 33;
@@ -462,11 +464,29 @@
             this.lblPerc.TabIndex = 31;
             this.lblPerc.Text = "Theor Percentage";
             // 
+            // lblMw
+            // 
+            this.lblMw.AutoSize = true;
+            this.lblMw.Location = new System.Drawing.Point(20, 169);
+            this.lblMw.Name = "lblMw";
+            this.lblMw.Size = new System.Drawing.Size(52, 13);
+            this.lblMw.TabIndex = 35;
+            this.lblMw.Text = "Mol Mass";
+            // 
+            // txtMw
+            // 
+            this.txtMw.Location = new System.Drawing.Point(121, 166);
+            this.txtMw.Name = "txtMw";
+            this.txtMw.Size = new System.Drawing.Size(220, 20);
+            this.txtMw.TabIndex = 34;
+            // 
             // frmFormFromRec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 542);
+            this.ClientSize = new System.Drawing.Size(1181, 572);
+            this.Controls.Add(this.lblMw);
+            this.Controls.Add(this.txtMw);
             this.Controls.Add(this.grpRowEdit);
             this.Controls.Add(this.lblRecipe);
             this.Controls.Add(this.txtRecipe);
@@ -545,5 +565,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TheoreticalPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn ComponentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ComponentQuantity;
+        private System.Windows.Forms.Label lblMw;
+        private System.Windows.Forms.TextBox txtMw;
     }
 }

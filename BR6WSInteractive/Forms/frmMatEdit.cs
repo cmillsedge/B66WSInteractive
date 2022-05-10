@@ -41,6 +41,7 @@ namespace BR6WSInteractive
             txtName.Text = mat.Name;
             txtDescrip.Text = mat.Description;
             txtSampleType.Text = mat.SampleTypeName;
+            txtMw.Text = mat.MolecularMass.ToString();
             //populate custom properties datagrid
             MaterialDataGridConverter.ConvertMaterialPropsToDataGrid(_InvWS, mat.CustomProperties, mat.SampleTypeName, dgvMat);
         }
@@ -58,6 +59,19 @@ namespace BR6WSInteractive
                 mat.Name = txtName.Text;
                 mat.Description = txtDescrip.Text;
                 mat.SampleTypeName = txtSampleType.Text;
+                if (txtMw.Text != null)
+                {
+                    Double dval;
+                    if (Double.TryParse(txtMw.Text, out dval))
+                    {
+                        dval = Double.Parse(txtMw.Text);
+                    }
+                    else
+                    {
+                        dval = 0.0;
+                    }
+                    mat.MolecularMass = dval;
+                }
                 //set array properties
                 Dictionary<string, BR.Inv.Model.StringArray> nvs = MaterialDataGridConverter.ConvertDataGridToProperties(dgvMat);
                 mat.CustomProperties = nvs;

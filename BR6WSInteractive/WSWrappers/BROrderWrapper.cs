@@ -54,12 +54,12 @@ namespace BR6WSInteractive
             return myOrder;
         }
 
-        //public Order CheckOrder(Order order)
-        //{
-        //    OrderApi ordAPI = new OrderApi();
-        //    Order myOrder = ordAPI.O(_session.SessionKey, order);
-        //    return myOrder;
-        //}
+        public Order CheckOrder(Order order)
+        {
+            OrderApi ordAPI = new OrderApi();
+            Order myOrder = ordAPI.OrderCheck(_session.SessionKey, order);
+            return myOrder;
+        }
 
         public Order UpdateOrderState(string order, string state)
         {

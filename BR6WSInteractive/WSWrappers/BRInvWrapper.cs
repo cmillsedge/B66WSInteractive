@@ -31,6 +31,8 @@ namespace BR6WSInteractive
             return myContainer;
         }
 
+        
+
         public Container CreateContainer(Container myContainer)
         {
             ContainerApi containersApi = new ContainerApi();
@@ -38,10 +40,24 @@ namespace BR6WSInteractive
             return newContainer;
         }
 
+        public BR.Inv.Model.JobReport CreateContainersBulk(ContainerBulk myContainers)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            BR.Inv.Model.JobReport jb = containersApi.ContainerUpload(_session.SessionKey, myContainers);
+            return jb;
+        }
+
         public Container UpdateContainerDescription(string containerName, Container myContainer)
         {
             ContainerApi containersApi = new ContainerApi();
             Container newContainer = containersApi.ContainerEdit(_session.SessionKey,containerName, myContainer);
+            return newContainer;
+        }
+
+        public Container UpdateContainer(string containerName, Container myContainer)
+        {
+            ContainerApi containersApi = new ContainerApi();
+            Container newContainer = containersApi.ContainerEdit(_session.SessionKey, containerName, myContainer);
             return newContainer;
         }
 
@@ -145,6 +161,20 @@ namespace BR6WSInteractive
 
             MaterialRecipeArray mt = materialApi.MaterialRecipes(_session.SessionKey, materialType, 100);
             return mt;
+        }
+
+        public Material ImportExternalMaterial(string table, string materialName)
+        {
+            ExternalMaterialApi materialApi = new ExternalMaterialApi();
+            Material myMaterial = materialApi.ExternalMaterialImport(_session.SessionKey, table, materialName);
+            return myMaterial;
+        }
+
+        public Material ImportExternalMaterialJob(string table, string field, BR.Inv.Model.StringArray names)
+        {
+            ExternalMaterialApi materialApi = new ExternalMaterialApi();
+            Material myMaterial  = materialApi.ExternalMaterialImportJob(_session.SessionKey, table, field, names);
+            return myMaterial;
         }
 
     }

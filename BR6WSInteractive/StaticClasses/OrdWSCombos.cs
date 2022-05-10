@@ -15,8 +15,11 @@ namespace BR6WSInteractive
             cmb.Items.Clear();
             foreach (OrderType cl in namevalues)
             {
-                cmb.Items.Add(cl.Name);
+                cmb.Items.Add(cl);
             }
+            cmb.DisplayMember = "Name";
+            cmb.ValueMember = "Id";
+
         }
 
     }

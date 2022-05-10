@@ -60,7 +60,9 @@ namespace BR6WSInteractive
                 ContainerTypeArray nmdType = _invOps.GetAllContainerTypes();
                 InvWSCombos.PopulateCombo(cmbLayout, nmdLay);
                 //get otype
-                OrderType ot = _ordOps.GetOrderType(cmbOType.Text);
+                cmbOType.SelectedIndex = 0;
+                OrderType otOld = cmbOType.SelectedItem as OrderType;
+                OrderType ot = _ordOps.GetOrderType(otOld.Id);
                 //populate the data grid with the order type columns
                 OrderDataGridConverter.ConvertOTypeToDataGrid(ot, dgvOrder, cmbSType.Text, cmbTypes.Text, cmbLayout.Text);
                 dgvOrder.AllowUserToAddRows = true;
@@ -183,7 +185,7 @@ namespace BR6WSInteractive
 
             //simple call to order_check method passing order object
             //!needs changing to CHECK ORDER
-            Order myOrder = _ordOps.CreateOrder(ord);
+            Order myOrder = _ordOps.CheckOrder(ord);
             return ord;
         }
 
@@ -210,7 +212,8 @@ namespace BR6WSInteractive
                 //instantiate order object and populate with existing order using order_get
                 dgvOrder.Columns.Clear();
                 dgvOrder.AllowUserToAddRows = true;
-                OrderType ot = _ordOps.GetOrderType(cmbOType.Text);
+                OrderType otOld = cmbOType.SelectedItem as OrderType;
+                OrderType ot = _ordOps.GetOrderType(otOld.Id);
                 //populate the data grid with the order type columns
                 OrderDataGridConverter.ConvertOTypeToDataGrid(ot, dgvOrder, cmbSType.Text, cmbTypes.Text, cmbLayout.Text);
 

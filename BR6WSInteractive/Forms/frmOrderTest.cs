@@ -69,20 +69,20 @@ namespace BR6WSInteractive
 
         private void btnShipments_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    using (frmShipments frmShip = new frmShipments(_coreWS, _InvWS, _OrdWS, _session))
-            //    {
-            //        frmShip.Location = this.Location;
-            //        frmShip.ShowDialog();
-            //        this.Hide();
-            //    }
-            //    this.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {
+                using (frmShipments frmShip = new frmShipments(_session, _url))
+                {
+                    frmShip.Location = this.Location;
+                    frmShip.ShowDialog();
+                    this.Hide();
+                }
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
     }
 }

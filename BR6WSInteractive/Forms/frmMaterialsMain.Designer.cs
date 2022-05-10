@@ -185,7 +185,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(298, 40);
             this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "This will test the material_get and material_create methods with the material nam" +
+            this.textBox1.Text = "This will test the material_get and material_upload methods with the material nam" +
     "es provided";
             // 
             // lblMatDest
@@ -374,8 +374,8 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(298, 57);
             this.textBox3.TabIndex = 11;
-            this.textBox3.Text = "This will test the material_formulation_create method. Note it uses the recipe va" +
-    "lue from the group of controls above.";
+            this.textBox3.Text = "This will test the material_create method. Note it uses the recipe value from the" +
+    " group of controls above.";
             // 
             // grpRecipe
             // 

@@ -288,76 +288,80 @@ namespace BR6WSInteractive
 
         private void BtnImportPlate_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    //get a file starting in C:\
-            //    string myfile = SelectTextFile("C:\\");
-            //    //use static method to convert the Excel sheet to a dataset
-            //    DataSet ds = ExcelToDataSet.Parse(myfile);
-            //    DataSet pds = new DataSet();
-            //    //check the dataset is actually compatible with the code by parsing it
-            //    pds = PlateData.GetPlateDataSet(pds);
-            //    if (PlateData.ValidPlateDataSet(pds, ds) == false )
-            //    {
-            //        MessageBox.Show("Cannot import file. It is of the wrong format.");
-            //    }
-            //    else
-            //    {
-            //        //instantiate a container
-            //        BRInvReference.Container plateout = new BRInvReference.Container();
-            //        //convert the dataset into a plate container
-            //        plateout = PlateFromDataSet.GetPlateFromDataSet(ds);
-            //        plateout.id = null;
-            //        //call create container with the plate container
-            //        BRInvReference.Status st = _InvWS.WSClient.container_create(_session.session_id, plateout);
-            //        plateout.id = null;
-            //        //Update the form with the outcome
-            //        InvWSOutcome.PostWSOutCome(st, "Import Plate ", rtbWSOutput);
-            //    }
-            //    //Console.WriteLine(pds.Tables[1].TableName.ToString());
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {
+                //get a file starting in C:\
+                string myfile = SelectTextFile("C:\\");
+                //use static method to convert the Excel sheet to a dataset
+                DataSet ds = ExcelToDataSet.Parse(myfile);
+                DataSet pds = new DataSet();
+                //check the dataset is actually compatible with the code by parsing it
+                pds = PlateData.GetPlateDataSet(pds);
+                if (PlateData.ValidPlateDataSet(pds, ds) == false)
+                {
+                    MessageBox.Show("Cannot import file. It is of the wrong format.");
+                }
+                else
+                {
+                    //instantiate a container
+                    Container plateout = new Container();
+                    //convert the dataset into a plate container
+                    plateout = PlateFromDataSet.GetPlateFromDataSet(ds);
+                    plateout.Id = null;
+                    //call create container with the plate container
+                    _invOps.CreateContainer(plateout);
+                    //Update the form with the outcome
+                    RichTextBoxExtensions.AppendText(rtbWSOutput, "Import Plate Success", Color.Green, _normFont);
+                }
+                //Console.WriteLine(pds.Tables[1].TableName.ToString());
+            }
+            catch (BR.Inv.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Import Plate Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error"); 
+            }
 
         }
 
         private void BtnIndContainer_Click(object sender, EventArgs e)
         {
-            //try
-            //{   //launch form for testing individual field business rules
-            //    using (frmIndTube frmInd = new frmIndTube(_coreWS, _InvWS, _session))
-            //    {
-            //        frmInd.Location = this.Location;
-            //        this.Hide();
-            //        frmInd.ShowDialog();
-            //    }
-            //    this.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {   //launch form for testing individual field business rules
+                using (frmIndTube frmInd = new frmIndTube( _session, _url))
+                {
+                    frmInd.Location = this.Location;
+                    this.Hide();
+                    frmInd.ShowDialog();
+                }
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void BtnWatson_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    //launch form for testing watson integration (customer specific)
-            //    using (frmWatson frmWat = new frmWatson(_coreWS, _InvWS, _session))
-            //    {
-            //        frmWat.Location = this.Location;
-            //        this.Hide();
-            //        frmWat.ShowDialog();
-            //    }
-            //    this.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {
+                //launch form for testing watson integration (customer specific)
+                using (frmWatson frmWat = new frmWatson(_session, _url))
+                {
+                    frmWat.Location = this.Location;
+                    this.Hide();
+                    frmWat.ShowDialog();
+                }
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
 
@@ -365,34 +369,34 @@ namespace BR6WSInteractive
         private void btmImpTubes_Click(object sender, EventArgs e)
         {
             //get a file starting in C:\
-            //string myfile = SelectTextFile("C:\\");
-            ////use static method to convert the Excel sheet to a dataset
-            //DataSet ds = ExcelToDataSet.Parse(myfile);
-            //DataSet pds = new DataSet();
-            ////check the dataset is actually compatible with the code by parsing it
-            //pds = PlateData.GetPlateDataSet(pds);
-            //if (PlateData.ValidPlateDataSet(pds, ds) == false)
-            //{
-            //    MessageBox.Show("Cannot import file. It is of the wrong format.");
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        //convert the dataset into tubes
-            //        BRInvReference.Container[] tubes = TubesFromDataSet.GetTubesFromDataSet(ds);
-            //        //instantiate a job id and set it equal to the job created when trying to create multiple materials with a list of names
-            //        int jobid = _InvWS.WSClient.container_upload_job(_session.session_id, tubes);
-            //        RichTextBoxExtensions.AppendText(rtbWSOutput, "Job Id = " + jobid.ToString(), Color.Green, _normFont);
-            //        //check the job outcome and update the form
-            //        //_InvWS.WSClient.container_upload_return()
-            //        InvWSOutcome.PostBulkJobOutCome(jobid, "Tube Upload Job - ", rtbWSOutput, _session, _InvWS);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "Error");
-            //    }
-            //}
+            string myfile = SelectTextFile("C:\\");
+            //use static method to convert the Excel sheet to a dataset
+            DataSet ds = ExcelToDataSet.Parse(myfile);
+            DataSet pds = new DataSet();
+            //check the dataset is actually compatible with the code by parsing it
+            pds = PlateData.GetPlateDataSet(pds);
+            if (PlateData.ValidPlateDataSet(pds, ds) == false)
+            {
+                MessageBox.Show("Cannot import file. It is of the wrong format.");
+            }
+            else
+            {
+                try
+                {
+                    //convert the dataset into tubes
+                    ContainerBulk cBulk = new ContainerBulk();
+                    ContainerArray cArray = TubesFromDataSet.GetTubesFromDataSet(ds);
+                    cBulk.Containers = cArray;  
+                    //instantiate a job id and set it equal to the job created when trying to create multiple materials with a list of names
+                    BR.Inv.Model.JobReport jb = _invOps.CreateContainersBulk(cBulk);
+                    InvWSOutcome.PostWSJobOutCome(jb.Id, "Bulk Container Creation or Update", rtbWSOutput, _session, _url);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error");
+                }
+            }
         }
 
     }   

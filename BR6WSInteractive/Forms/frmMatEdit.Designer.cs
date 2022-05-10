@@ -42,6 +42,8 @@
             this.lblSType = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.lblIdVal = new System.Windows.Forms.Label();
+            this.txtMw = new System.Windows.Forms.TextBox();
+            this.lblMw = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,9 +85,9 @@
             this.dgvMat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PropName,
             this.PropVal});
-            this.dgvMat.Location = new System.Drawing.Point(16, 111);
+            this.dgvMat.Location = new System.Drawing.Point(16, 134);
             this.dgvMat.Name = "dgvMat";
-            this.dgvMat.Size = new System.Drawing.Size(318, 327);
+            this.dgvMat.Size = new System.Drawing.Size(318, 304);
             this.dgvMat.TabIndex = 6;
             // 
             // PropName
@@ -152,11 +154,29 @@
             this.lblIdVal.Size = new System.Drawing.Size(0, 13);
             this.lblIdVal.TabIndex = 12;
             // 
+            // txtMw
+            // 
+            this.txtMw.Location = new System.Drawing.Point(114, 99);
+            this.txtMw.Name = "txtMw";
+            this.txtMw.Size = new System.Drawing.Size(220, 20);
+            this.txtMw.TabIndex = 14;
+            // 
+            // lblMw
+            // 
+            this.lblMw.AutoSize = true;
+            this.lblMw.Location = new System.Drawing.Point(13, 102);
+            this.lblMw.Name = "lblMw";
+            this.lblMw.Size = new System.Drawing.Size(52, 13);
+            this.lblMw.TabIndex = 13;
+            this.lblMw.Text = "Mol Mass";
+            // 
             // frmMatEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 452);
+            this.Controls.Add(this.txtMw);
+            this.Controls.Add(this.lblMw);
             this.Controls.Add(this.lblIdVal);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtSampleType);
@@ -193,5 +213,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PropVal;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblIdVal;
+        private System.Windows.Forms.TextBox txtMw;
+        private System.Windows.Forms.Label lblMw;
     }
 }
