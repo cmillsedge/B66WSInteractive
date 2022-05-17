@@ -69,7 +69,7 @@ namespace BR6WSInteractive
                         cpArray.Add(dgvOrder.Columns[p + numCols].Name, dgvOrder[p + numCols, i].Value.ToString());
                     }
                     oitem.CustomProperties = cpArray;
-                    oitems[i] = oitem;
+                    oitems.Add(oitem);
 
                 }
                 ord.OrderItems = oitems;

@@ -11,7 +11,6 @@ C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInter
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Release\BR.Ord.pdb
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Release\Newtonsoft.Json.xml
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\bin\x64\Release\RestSharp.xml
-C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.csproj.AssemblyReference.cache
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.csproj.SuggestedBindingRedirects.cache
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.csproj.ResolveComReference.cache
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.frmFormFromRec.resources

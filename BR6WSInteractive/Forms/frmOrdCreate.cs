@@ -58,7 +58,7 @@ namespace BR6WSInteractive
                 InvWSCombos.PopulateCombo(cmbLayout, nmdLay);
                 //Get container types and populate combo
                 ContainerTypeArray nmdType = _invOps.GetAllContainerTypes();
-                InvWSCombos.PopulateCombo(cmbLayout, nmdLay);
+                InvWSCombos.PopulateCombo(cmbTypes, nmdType);
                 //get otype
                 cmbOType.SelectedIndex = 0;
                 OrderType otOld = cmbOType.SelectedItem as OrderType;
@@ -165,7 +165,7 @@ namespace BR6WSInteractive
                 Order myOrder = CheckOrder(ord);
                 //if the order is valid then enable the order create button
                 btnOrder.Enabled = true;
-                RichTextBoxExtensions.AppendText(rtbWSOutput, "Check Order Succesful ", Color.Red, _normFont);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Check Order Succesful ", Color.Green, _normFont);
 
             }
             catch (BR.Ord.Client.ApiException apiEx)
