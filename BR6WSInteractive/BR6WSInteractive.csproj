@@ -143,12 +143,14 @@
     <Compile Include="Forms\frmWatson.Designer.cs">
       <DependentUpon>frmWatson.cs</DependentUpon>
     </Compile>
+    <Compile Include="OItemMessage.cs" />
     <Compile Include="StaticClasses\BRExceptionCleaner.cs" />
     <Compile Include="StaticClasses\CoreWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSCombos.cs" />
     <Compile Include="StaticClasses\InvWSOutcome.cs" />
     <Compile Include="StaticClasses\OrderDataGridConverter.cs" />
     <Compile Include="StaticClasses\OrdWSCombos.cs" />
+    <Compile Include="StaticClasses\OrdWSOutcome.cs" />
     <Compile Include="StaticClasses\PlateData.cs" />
     <Compile Include="StaticClasses\PlateFromDataSet.cs" />
     <Compile Include="StaticClasses\RichTextBoxExtensions.cs" />

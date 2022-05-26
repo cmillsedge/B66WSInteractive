@@ -20,6 +20,7 @@ namespace BR6WSInteractive
         {
             _session = session;
             _url = url;
+            _url += "/ordering";
         }
         public BROrderWrapper()
         {
@@ -28,49 +29,49 @@ namespace BR6WSInteractive
 
         public OrderTypeArray GetAllOrderTypes()
         {
-            OrderTypeApi ordAPI = new OrderTypeApi();
+            OrderTypeApi ordAPI = new OrderTypeApi(_url);
             OrderTypeArray myTypes = ordAPI.OrderTypeList(_session.SessionKey);              
             return myTypes;
         }
 
         public OrderType GetOrderType(string orderType)
         {
-            OrderTypeApi ordAPI = new OrderTypeApi();
+            OrderTypeApi ordAPI = new OrderTypeApi(_url);
             OrderType myType = ordAPI.OrderTypeGet(_session.SessionKey, orderType);
             return myType;
         }
 
         public Order GetOrder(string order)
         {
-            OrderApi ordAPI = new OrderApi();
+            OrderApi ordAPI = new OrderApi(_url);
             Order myOrder = ordAPI.OrderFind(_session.SessionKey, order);
             return myOrder;
         }
 
         public Order CreateOrder(Order order)
         {
-            OrderApi ordAPI = new OrderApi();
+            OrderApi ordAPI = new OrderApi(_url);
             Order myOrder = ordAPI.OrderCreate(_session.SessionKey, order);
             return myOrder;
         }
 
-        public Order CheckOrder(Order order)
+        public OrderCheck CheckOrder(Order order)
         {
-            OrderApi ordAPI = new OrderApi();
-            Order myOrder = ordAPI.OrderCheck(_session.SessionKey, order);
+            OrderApi ordAPI = new OrderApi(_url);
+            OrderCheck myOrder = ordAPI.OrderCheck(_session.SessionKey, order);
             return myOrder;
         }
 
         public Order UpdateOrderState(string order, string state)
         {
-            OrderApi ordAPI = new OrderApi();
+            OrderApi ordAPI = new OrderApi(_url);
             Order myOrder = ordAPI.OrderUpdateState(_session.SessionKey, order, state);
             return myOrder;
         }
 
         public OrderItemArray UpdateOrderItems(OrderItemBulk oItems)
         {
-            OrderItemApi oItemAPI = new OrderItemApi();
+            OrderItemApi oItemAPI = new OrderItemApi(_url);
             OrderItemArray myItems = oItemAPI.OrderItemSave(_session.SessionKey, oItems);
             return myItems;
         }

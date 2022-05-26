@@ -37,3 +37,4 @@ C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInter
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.csproj.CopyComplete
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.exe
 C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.pdb
+C:\Users\millsy\source\repos\CSharp\BR6WSInteractive\B66WSInteractive\BR6WSInteractive\obj\x64\Release\BR6WSInteractive.csproj.AssemblyReference.cache

@@ -162,7 +162,8 @@ namespace BR6WSInteractive
                 //build the order based on the form contents
                 Order ord = BuildOrder();
                 //check the order without placing it e.g. is it a valid order
-                Order myOrder = CheckOrder(ord);
+                OrderCheck myOrder = CheckOrder(ord);
+                OrdWSOutcome.ProcessOrderStatus(myOrder, rtbWSOutput, dgvOrder);
                 //if the order is valid then enable the order create button
                 btnOrder.Enabled = true;
                 RichTextBoxExtensions.AppendText(rtbWSOutput, "Check Order Succesful ", Color.Green, _normFont);
@@ -180,13 +181,13 @@ namespace BR6WSInteractive
 
         }
 
-        private Order CheckOrder(Order ord)
+        private OrderCheck CheckOrder(Order ord)
         {
 
             //simple call to order_check method passing order object
             //!needs changing to CHECK ORDER
-            Order myOrder = _ordOps.CheckOrder(ord);
-            return ord;
+            OrderCheck myOrder = _ordOps.CheckOrder(ord);
+            return myOrder;
         }
 
         private Order MakeOrder(Order ord)

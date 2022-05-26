@@ -85,8 +85,8 @@ namespace BR6WSInteractive
                     n += 1;
                 }
                 //instantiate a job id and set it equal to the job created when trying to create multiple materials with a list of names
-                Material myMaterial = _invOps.ImportExternalMaterialJob( "MOCK_EXTERNAL_MATERIALS", "NAME", names);
-                _invOps.ImportExternalMaterialJob("MOCK_EXTERNAL_MATERIALS", "NAME", names);
+                BR.Inv.Model.JobReport myJob = _invOps.ImportExternalMaterialJob( "MOCK_EXTERNAL_MATERIALS", "NAME", names);
+                InvWSOutcome.PostWSJobOutCome(myJob.Id, "External Import Job", rtbWSOutput, _session, _url);
                 //check the job outcome and update the form
                 RichTextBoxExtensions.AppendText(rtbWSOutput, "Material Import Success", Color.Red, _normFont);
             }
