@@ -57,6 +57,28 @@ namespace BR6WSInteractive
             }
             return returnString;
         }
+
+        public static StringArray ConvertListBoxToStringArray(ListBox lsb)
+        {
+            StringArray returnString = new StringArray();
+            try
+            {
+
+                //loop through the listbox
+                for (int i = 0; i < lsb.Items.Count; i++)
+                {
+                    if (lsb.Items[i].ToString() != String.Empty)
+                    {
+                        returnString.Add(lsb.Items[i].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return returnString;
+        }
     }
 }
 

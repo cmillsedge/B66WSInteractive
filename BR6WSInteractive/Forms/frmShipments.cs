@@ -101,8 +101,9 @@ namespace BR6WSInteractive
                     ship.OrderTypeName = cmbOrderSystem.Text;
                     ship.Name = txtName.Text;
                     ship.ContainerLayoutName = cmbLayout.Text;
-                    ShipmentItemArray nmd = OrderListBoxConverter.ConvertListBoxToNamed(lstContainers, txtLocation.Text);
-                    ship.Items = nmd;
+                    ship.LocationPath = txtLocation.Text;
+                    BR.Ord.Model.StringArray containers = OrderListBoxConverter.ConvertListBoxToStringArray(lstContainers);
+                    ship.ContainerNames = containers;
                     //Status st = _ordWS.WSClient.shipment_create(_session.session_id, ship);
                     Shipment shipReturn = _ordOps.DispatchContainers(ship);
                     RichTextBoxExtensions.AppendText(rtbWSOutput, "Shipment Success ", Color.Green, _normFont);
