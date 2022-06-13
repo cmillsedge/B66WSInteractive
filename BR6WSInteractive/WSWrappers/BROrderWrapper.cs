@@ -76,6 +76,19 @@ namespace BR6WSInteractive
             return myItems;
         }
 
+        public Shipment DispatchContainers(Shipment shipment)
+        {
+            ShipmentApi shipAPI = new ShipmentApi(_url);
+            Shipment myShip = shipAPI.ShipmentDispatch(_session.SessionKey, shipment);
+            return myShip;
+        }
+
+        public void ReceiveContainers(string barcodes, string location)
+        {
+            ShipmentApi shipAPI = new ShipmentApi(_url);
+            BR.Ord.Model.NamedArray itemsReturn = shipAPI.ShipmentReceipt(_session.SessionKey, barcodes, location);
+        }
+
 
     }
 }

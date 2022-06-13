@@ -42,26 +42,26 @@ namespace BR6WSInteractive
 
         private void ConfigureForm()
         {
-            //try
-            //{
+            try
+            {
 
-            //    //Get combo values
-            //    BRCoreReference.Named[] nmdlay = CoreWSCombos.GetDictVals(_session, _coreWS, "/Root/Inventory/ContainerLayout", "TransportLayouts", "%");
-            //    CoreWSCombos.PopulateCombo(cmbLayout, nmdlay);
-            //    BRCoreReference.Named[] nmdcore = CoreWSCombos.GetDictVals(_session, _coreWS, "/Root/Inventory/OrderSystem", "All", "%");
-            //    CoreWSCombos.PopulateCombo(cmbOrderSystem, nmdcore);
-            //    //disable controls until it is clear what user is doing
-            //    txtName.Enabled = false;
-            //    cmbLayout.Enabled = false;
-            //    txtLocation.Enabled = false;
-            //    cmbOrderSystem.Enabled = false;
-            //    btnDispatch.Enabled = false;
-            //    btnReceive.Enabled = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+                //Get combo values
+                BioRails.Core.Model.NamedArray nmdlay = _catOps.GetDictVals("/Root/Inventory/ContainerSlot/TransportLayouts", "", 100, 0);
+                CoreWSCombos.PopulateCombo(cmbLayout, nmdlay);
+                BioRails.Core.Model.NamedArray osystems = _catOps.GetDictVals("/Root/Inventory/OrderSystem/All", "", 100, 0);
+                CoreWSCombos.PopulateCombo(cmbOrderSystem, osystems);
+                //disable controls until it is clear what user is doing
+                txtName.Enabled = false;
+                cmbLayout.Enabled = false;
+                txtLocation.Enabled = false;
+                cmbOrderSystem.Enabled = false;
+                btnDispatch.Enabled = false;
+                btnReceive.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -90,54 +90,61 @@ namespace BR6WSInteractive
 
         private void btnDispatch_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (txtName.Text == String.Empty | txtLocation.Text == String.Empty | cmbOrderSystem.Text == String.Empty | lstContainers.Items.Count == 0)
-            //    { MessageBox.Show("All fields except layout are mandatory"); }
-            //    else
-            //    {
-            //        Shipment ship = new Shipment();
-            //        ship.Address = txtLocation.Text;
-            //        ship.OrderTypeName = cmbOrderSystem.Text;
-            //        ship.Name = txtName.Text;
-            //        ship.ContainerLayoutName = cmbLayout.Text;
-            //        Named[] nmd = OrderListBoxConverter.ConvertListBoxToNamed(lstContainers);
-            //        ship.Items = nmd;
-            //        //Status st = _ordWS.WSClient.shipment_create(_session.session_id, ship);
-            //        int jobid = _ordWS.WSClient.shipment_create_job(_session.session_id, ship);
+            try
+            {
+                if (txtName.Text == String.Empty | txtLocation.Text == String.Empty | cmbOrderSystem.Text == String.Empty | lstContainers.Items.Count == 0)
+                { MessageBox.Show("All fields except layout are mandatory"); }
+                else
+                {
+                    Shipment ship = new Shipment();
+                    ship.Address = txtLocation.Text;
+                    ship.OrderTypeName = cmbOrderSystem.Text;
+                    ship.Name = txtName.Text;
+                    ship.ContainerLayoutName = cmbLayout.Text;
+                    ShipmentItemArray nmd = OrderListBoxConverter.ConvertListBoxToNamed(lstContainers, txtLocation.Text);
+                    ship.Items = nmd;
+                    //Status st = _ordWS.WSClient.shipment_create(_session.session_id, ship);
+                    Shipment shipReturn = _ordOps.DispatchContainers(ship);
+                    RichTextBoxExtensions.AppendText(rtbWSOutput, "Shipment Success ", Color.Green, _normFont);
 
-            //        OrdWSOutcome.ShipmentOutCome(jobid.ToString(), "Shipment Create", rtbWSOutput, _session, _coreWS, _ordWS);
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+                }
+            }
+            catch (BR.Ord.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Shipment Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            //try
-            //{ 
-            //    if (lstContainers.Items.Count == 0)
-            //    { MessageBox.Show("Container list is mandatory"); }
-            //    else
-            //    {
-            //        Receipt rec = new Receipt();
-            //        Named[] nmd = OrderListBoxConverter.ConvertListBoxToNamed(lstContainers);
-            //        rec.barcodes = nmd;
-            //        //IF location is blank order items location should be used.
-            //        if (txtLocation.Text != "")
-            //        { rec.location_path = txtLocation.Text; }
-            //        ListStatus ls = _ordWS.WSClient.shipment_receipt(_session.session_id, rec);
-            //        OrdWSOutcome.ProcessReceiptOutcome(ls, "Container Receipt", rtbWSOutput, _session);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error");
-            //}
+            try
+            {
+                if (txtLocation.Text == "")
+                { MessageBox.Show("Location path is mandatory"); }
+                if (lstContainers.Items.Count == 0)
+                { MessageBox.Show("Container list is mandatory"); }
+                else
+                {
+                    String barcodes = OrderListBoxConverter.ConvertListBoxToString(lstContainers);
+                    //IF location is blank order items location should be used.
+                    _ordOps.ReceiveContainers(barcodes,txtLocation.Text);
+                    RichTextBoxExtensions.AppendText(rtbWSOutput, "Receipt Success ", Color.Green, _normFont);
+                }
+            }
+            catch (BR.Ord.Client.ApiException apiEx)
+            {
+                string msg = BRExceptionCleaner.GetErrorMessageFromBioRailsError(apiEx.Message);
+                RichTextBoxExtensions.AppendText(rtbWSOutput, "Receipt Failed - " + msg, Color.Red, _normFont);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void btnPaste_Click(object sender, EventArgs e)
